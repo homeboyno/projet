@@ -9,7 +9,7 @@ class Client:
 		self.estAbonne = False
 		self.estSuperAbonne = False
 		self.nbFrequentations = 0
-				
+		
 	def sAbonner(self, Abonnement):
 		self.__estAbonne = True
 		self.abonnement = Abonnement
@@ -19,7 +19,7 @@ class Client:
 		
 	def seDesabonner(self):
 		self.estAbonne = False
-		del self.abonnement
+		#del self.abonnement
 
 	def demanderMaintenance(self):
 		pass
@@ -33,4 +33,4 @@ class Client:
 	def entrerParking(self, Acces):
 		self.nbFrequentations += 1
 		self.voiture.estDansParking = True
-		Acces.lancerProcedureEntree
+		Acces.lancerProcedureEntree()

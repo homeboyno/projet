@@ -1,3 +1,5 @@
+from Placement import Placement
+
 class Place:
 	def __init__(self, numero, niveau, longueur, estLibre, hauteur):
 		self.numero = numero

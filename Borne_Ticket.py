@@ -3,10 +3,9 @@ from Parking import Parking
 
 class Borne_Ticket:
 	def __init__(self):
-		pass
 		
 	def delivrerTicket(self, Client):
-		return "Ticket"
+		return "Voici votre ticket : Ticket"
 		
 	def proposerServices(self):
 		pass
@@ -15,8 +14,10 @@ class Borne_Ticket:
 		pass
 	
 	def recupererInfosCarte(self, Client):
-		pass
+		return Client.nom;
 		
 	def proposerTypePaiement():
-		pass
+		return "Quel est le mode de paiement que vous avez choisis ?"
 		
+	def add(self, acces):
+		self.acces = acces

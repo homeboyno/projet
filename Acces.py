@@ -7,12 +7,13 @@ from Panneau_Affichage import Panneau_Affichage
 
 class Acces:
 	
-	def __init__(self, Panneau_Affichage, teleporteur1, teleporteur2, Borne_Ticket, Camera):
+	def __init__(self, Panneau_Affichage, tel_entree, tel_sortie, Borne_Ticket, Camera, Parking):
 		self.panneau_affichage = Panneau_Affichage
-		self.teleporteur1 = teleporteur1
-		self.teleporteur2 = teleporteur2
+		self.tel_entree = tel_entree
+		self.tel_sortie = tel_sortie
 		self.borne_bicket = Borne_Ticket
 		self.camera = Camera
+		self.parking = Parking
 		
 	def actionnerCamera(self, Client):
 		hauteur = camera.hauteur(Client.voiture)
@@ -27,3 +28,5 @@ class Acces:
 	def lancerProcedureEntree(self, Client):
 		actionnerCamera(self, Client)
 		actionnerPanneau(self)
+		#Obtenir identificateur de place
+

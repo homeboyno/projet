@@ -1,3 +1,5 @@
+from Placement import Placement
+
 class Voiture:
 	def __init__(self, hauteur, longueur, immatriculation):
 		self.__hauteur = hauteur
@@ -16,5 +18,4 @@ class Voiture:
 
 	def addPlacementV(self, Placement):
 		self.placement = Placement
-	
-
+		

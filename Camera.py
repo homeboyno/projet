@@ -4,6 +4,7 @@ class Camera:
 	
 	def __init__(self):
 		pass
+		#self.aaaaaaaaaa = None ?
 		
 	def capturerHauteur(self, Voiture):
 		return Voiture.hauteur
@@ -13,3 +14,6 @@ class Camera:
 		
 	def capturerImmatr(self, Voiture):
 		return Voiture.immatriculation
+		
+	def add(acces):
+		self.acces = acces
