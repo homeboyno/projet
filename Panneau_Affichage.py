@@ -8,7 +8,7 @@ class Panneau_Affichage:
 		if(Parking.nbPlacesLibres > 0):
 			Rst = "Nombre de place libre : " + str(Parking.nbPlacesLibres) + " \n"
 			for niveau in range(0, Parking.nbNiveaux) :
-				Rst += "\tNombre place niveau " + str(niveau) + " : " +str(Parking.nbPlacesParNiveau(niveau)) + "\n"
+				Rst += "\tNombre place niveau " + str(niveau) + " : " +str(Parking.nbPlacesAuNiveau(niveau)) + "\n"
 				#Nombre de place par Niveau : " + str(Parking.nbPlacesParNiveau)
 			return Rst
 		else:

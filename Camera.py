@@ -1,4 +1,5 @@
 from Voiture import Voiture
+from random import randint
 
 class Camera:
 	
@@ -7,13 +8,14 @@ class Camera:
 		#self.aaaaaaaaaa = None ?
 		
 	def capturerHauteur(self, Voiture):
-		return Voiture.hauteur
+		Voiture.hauteur = (randint(100,200))#Voiture.hauteur
 		
 	def capturerLongueur(self, Voiture):
-		return Voiture.longueur
+		Voiture.longueur = (randint(250,400))#Voiture.longueur
 		
 	def capturerImmatr(self, Voiture):
-		return Voiture.immatriculation
+		string.letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+		Voiture.immatriculation = str(randint(0,999) + random.choice(string.letters) + random.choice(string.letters) + randint(0,999)) #Voiture.immatriculation
 		
 	def add(acces):
 		self.acces = acces
