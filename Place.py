@@ -1,4 +1,4 @@
-from Placement import Placement
+#from Placement import Placement
 
 class Place:
 	def __init__(self, numero, niveau, longueur, estLibre, hauteur):
@@ -7,7 +7,7 @@ class Place:
 		self.__longueur = longueur
 		self.__estLibre = estLibre
 		self.__hauteur = hauteur
-		self.idPlace = str(niveau) + str(longueur)
+		self.idPlace = str(niveau) + str(numero)
 		
 	@property
 	def niveau(self):return self.__niveau

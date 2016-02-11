@@ -1,11 +1,11 @@
-from Parking import Parking
+#from Parking import Parking
 
 class Panneau_Affichage:
 	def __init__(self):
 		pass
 						
 	def afficherNbPlacesDisponible(self, Parking):
-		if(Parking.nbPlacesLibres > 0):
+		if Parking.nbPlacesLibres > 0:
 			Rst = "Nombre de place libre : " + str(Parking.nbPlacesLibres) + " \n"
 			for niveau in range(0, Parking.nbNiveaux) :
 				Rst += "\tNombre place niveau " + str(niveau) + " : " +str(Parking.nbPlacesAuNiveau(niveau)) + "\n"

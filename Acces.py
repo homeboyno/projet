@@ -1,9 +1,9 @@
-from Client import Client
+'''from Client import Client
 from Parking import Parking
 from Camera import Camera
 from Borne_Ticket import Borne_Ticket
 from Teleporteur import Teleporteur
-from Panneau_Affichage import Panneau_Affichage
+from Panneau_Affichage import Panneau_Affichage'''
 
 class Acces:
 	
@@ -16,17 +16,17 @@ class Acces:
 		self.parking = Parking
 		
 	def actionnerCamera(self, Client):
-		hauteur = camera.hauteur(Client.voiture)
-		longueur = camera.longueur(Client.voiture)
-		imma = camera.immatriculation(Client.voiture)
+		hauteur = self.camera.capturerHauteur(Client.voiture)
+		longueur = self.camera.capturerLongueur(Client.voiture)
+		imma = self.camera.capturerImmatr(Client.voiture)
 		Client.nouvelle_voiture(hauteur, longueur, imma)
 		return Client.voiture
 		
 	def actionnerPanneau(self):
-		self.panneau_affichage.afficherNbPlacesDisponible()
+		self.panneau_affichage.afficherNbPlacesDisponible(self.parking)
 		
 	def lancerProcedureEntree(self, Client):
-		actionnerCamera(self, Client)
-		actionnerPanneau(self)
+		self.actionnerCamera(Client)
+		self.actionnerPanneau()
 		#Obtenir identificateur de place
 

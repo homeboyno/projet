@@ -1,4 +1,4 @@
-from Placement import Placement
+#from Placement import Placement
 
 class Voiture:
 	def __init__(self, hauteur, longueur, immatriculation):

@@ -1,10 +1,12 @@
-from Client import Client
-from Parking import Parking
+'''from Client import Client
+from Parking import Parking'''
 
 class Borne_Ticket:
 	def __init__(self):
+		pass
 		
 	def delivrerTicket(self, Client):
+		#Client.ticket =  
 		return "Voici votre ticket : Ticket"
 		
 	def proposerServices(self):

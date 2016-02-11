@@ -1,5 +1,6 @@
-from Abonnement import Abonnement
-from Acces import Acces
+#from Abonnement import Abonnement
+#from Acces import Acces
+from Voiture import Voiture
 
 class Client:
 	
@@ -9,6 +10,7 @@ class Client:
 		self.estAbonne = False
 		self.estSuperAbonne = False
 		self.nbFrequentations = 0
+		self.voiture = Voiture(1, 1, "1")
 		
 	def sAbonner(self, Abonnement):
 		self.__estAbonne = True
@@ -19,18 +21,26 @@ class Client:
 		
 	def seDesabonner(self):
 		self.estAbonne = False
-		#del self.abonnement
+		#del self.abonnement    Conserver qu'il a ete abonner pour faire des stats.
 
 	def demanderMaintenance(self):
-		pass
+		maintenance = input("Voulez vous une maintenance ? True/False ")
+		maintenance = bool(maintenance)
+		return maintenance
 		
 	def demanderLivraison(self, dateLiv, heure, adresseLiv):
-		pass
+		livraison = input("Voulez vous une livraison ? True/False ")
+		livraison = bool(livraison)
+		return livraison
 		
 	def demanderEntretien(self):
-		pass
+		entretien = input("Voulez vous un entretien ? True/False ")
+		entretien = bool(entretien)
+		return entretien
 		
 	def entrerParking(self, Acces):
+		Acces.lancerProcedureEntree(self)
 		self.nbFrequentations += 1
 		self.voiture.estDansParking = True
-		Acces.lancerProcedureEntree()
+		
+		
