@@ -28,7 +28,8 @@ class Client:
 		maintenance = bool(maintenance)
 		return maintenance
 		
-	def demanderLivraison(self, dateLiv, heure, adresseLiv):
+	def demanderLivraison(self):
+		''', dateLiv, heure, adresseLiv'''
 		livraison = input("Voulez vous une livraison ? True/False ")
 		livraison = bool(livraison)
 		return livraison

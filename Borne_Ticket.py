@@ -1,6 +1,6 @@
 '''from Client import Client
 from Parking import Parking'''
-
+from Abonnement import Abonnement
 class Borne_Ticket:
 	def __init__(self):
 		pass
@@ -9,17 +9,32 @@ class Borne_Ticket:
 		#Client.ticket =  
 		return "Voici votre ticket : Ticket"
 		
-	def proposerServices(self):
-		pass
+	def proposerServices(self, Client, Parking):
+		if Client.estAbonne == True:
+			maintenance = Client.demanderMaintenance()
+			livraison = Client.demanderLivraison()
+			entretien = Client.demanderEntretien()
+		else:
+			print("Les abonnes beneficie d'avantages et de services.")
+			self.proposerAbonnements(Client, Parking)
+		self.proposerTypePaiement()
+		print(self.delivrerTicket(Client))
+		
 		
 	def proposerAbonnements(self, Client, Parking):
-		pass
+		abonnement_ = input("Voulez vous vous abonner ? True/False ")
+		abonnement_ = bool(abonnement_)
+		if abonnement_ :
+			abo = Abonnement()
+			Client.sAbonner(abo)
+			Parking.addAbonnement(abo)
 	
 	def recupererInfosCarte(self, Client):
-		return Client.nom;
+		return Client;
 		
-	def proposerTypePaiement():
-		return "Quel est le mode de paiement que vous avez choisis ?"
+	def proposerTypePaiement(self):
+		paiement = input("Quel est le mode de paiement que vous avez choisis ?  CB/Espece : ")
+		return paiement
 		
 	def add(self, acces):
 		self.acces = acces

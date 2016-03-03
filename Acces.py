@@ -19,6 +19,7 @@ class Acces:
 		hauteur = self.camera.capturerHauteur(Client.voiture)
 		longueur = self.camera.capturerLongueur(Client.voiture)
 		imma = self.camera.capturerImmatr(Client.voiture)
+		print("Camera : Hauteur " + str(hauteur) + " - Longueur " + str(longueur) + " - Immatricule " + str(imma))
 		Client.nouvelle_voiture(hauteur, longueur, imma)
 		return Client.voiture
 		
