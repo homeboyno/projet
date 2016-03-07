@@ -21,13 +21,24 @@ class Borne_Ticket:
 		print(self.delivrerTicket(Client))
 		
 		
+		
+		
+			
+				
 	def proposerAbonnements(self, Client, Parking):
-		abonnement_ = input("Voulez vous vous abonner ? True/False ")
-		abonnement_ = bool(abonnement_)
-		if abonnement_ :
-			abo = Abonnement()
-			Client.sAbonner(abo)
-			Parking.addAbonnement(abo)
+		abonnement_ = input("Voulez vous vous abonner ? 1:True 2:False ")
+		while True:
+			if abonnement_ == 1:
+				abo = Abonnement()
+				Client.sAbonner(abo)
+				Parking.addAbonnement(abo)
+				break
+			elif abonnement_ == 2:
+				break
+			else:
+				abonnement_ = input("Voulez vous vous abonner ? 1:True 2:False ")
+		
+			
 	
 	def recupererInfosCarte(self, Client):
 		return Client;

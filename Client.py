@@ -24,20 +24,34 @@ class Client:
 		#del self.abonnement    Conserver qu'il a ete abonner pour faire des stats.
 
 	def demanderMaintenance(self):
-		maintenance = input("Voulez vous une maintenance ? True/False ")
-		maintenance = bool(maintenance)
-		return maintenance
+		maintenance = input("Voulez vous une maintenance ? 1:True 2:False ")
+		while True:
+			if maintenance == 1:
+				return True
+			elif maintenance == 2:
+				return False
+			else:
+				maintenance = input("Voulez vous une maintenance ? 1:True 2:False ")
 		
 	def demanderLivraison(self):
-		''', dateLiv, heure, adresseLiv'''
-		livraison = input("Voulez vous une livraison ? True/False ")
-		livraison = bool(livraison)
-		return livraison
+		livraison = input("Voulez vous une livraison ? 1:True 2:False ")
+		while True:
+			if livraison == 1:
+				return True
+			elif livraison == 2:
+				return False
+			else:
+				livraison = input("Voulez vous une livraison ? 1:True 2:False ")
 		
 	def demanderEntretien(self):
-		entretien = input("Voulez vous un entretien ? True/False ")
-		entretien = bool(entretien)
-		return entretien
+		entretien = input("Voulez vous un entretien ? 1:True 2:False ")
+		while True:
+			if entretien == 1:
+				return True
+			elif entretien == 2:
+				return False
+			else:
+				entretien = input("Voulez vous un entretien ? 1:True 2:False ")
 		
 	def entrerParking(self, Acces):
 		Acces.lancerProcedureEntree(self)
