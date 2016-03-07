@@ -76,11 +76,42 @@ if __name__ == '__main__':
 	recuperation = input("Voulez vous recuperer les anciennes donnees ? 1:True 2:False ")
 	recup = stringToBool(recuperation)
 	if recup:
-		print("recup" + recup)
-		input = open('parking.saved', 'r')
-		p = pickle.Unpickler(input)  
+		fichier = open('parking.saved', 'r')
+		p = pickle.Unpickler(fichier)  
 		parking = p.load() 
-		input.close()
+		fichier.close()
+		
+		fichier = open('cam1.saved', 'r')
+		p = pickle.Unpickler(fichier)  
+		cam1 = p.load() 
+		fichier.close()
+		
+		fichier = open('pano.saved', 'r')
+		p = pickle.Unpickler(fichier)  
+		pano = p.load() 
+		fichier.close()
+		
+		fichier = open('telEntre.saved', 'r')
+		p = pickle.Unpickler(fichier)  
+		telEntre = p.load() 
+		fichier.close()
+		
+		fichier = open('telSortie.saved', 'r')
+		p = pickle.Unpickler(fichier)  
+		telSortie = p.load() 
+		fichier.close()
+		
+		fichier = open('BorneTicket.saved', 'r')
+		p = pickle.Unpickler(fichier)  
+		BorneTicket = p.load() 
+		fichier.close()
+		
+		fichier = open('acces1.saved', 'r')
+		p = pickle.Unpickler(fichier)  
+		acces1 = p.load() 
+		fichier.close()
+		
+		
 		print("Recuperation des donnees terminer")
 	else:
 		parking = Parking(10,5,4)
@@ -125,20 +156,32 @@ if __name__ == '__main__':
 				output = open('parking.saved', 'w')
 				pickle.dump(parking, output)
 				output.close()
+				
+				output = open('cam1.saved', 'w')
+				pickle.dump(cam1, output)
+				output.close()
+				
+				output = open('pano.saved', 'w')
+				pickle.dump(pano, output)
+				output.close()
+				
+				output = open('telEntre.saved', 'w')
+				pickle.dump(telEntre, output)
+				output.close()
+				
+				output = open('telSortie.saved', 'w')
+				pickle.dump(telSortie, output)
+				output.close()
+				
+				output = open('BorneTicket.saved', 'w')
+				pickle.dump(BorneTicket, output)
+				output.close()
+				
+				output = open('acces1.saved', 'w')
+				pickle.dump(acces1, output)
+				output.close()
 	print("Fin du programme")
 	
-	
-	
-	#clt.nouvelle_voiture()
-	'''vtr = Voiture(150,50,"F4SD5")
-	print(vtr.hauteur)
-	print(vtr.longueur)
-	print(vtr.immatriculation)'''
-	#park = Parking()
-	#pano = Panneau_Affichage(park)
-	#pano.afficherNbPlacesDisponible()
-
-
 
 '''
 Procedure pour initialiser le projet (no verif)
