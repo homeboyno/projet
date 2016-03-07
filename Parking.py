@@ -9,11 +9,15 @@ class Parking:
 		self.abonnement = []
 		
 	def recherchePlace(self, voiture):
+		"""
+		seach for each places if the car can get in		
+		return a specific value "None" in case no place are free for the car
+		"""
 		for pla in self.places:
 			if(pla.estLibre and (pla.longueur >= voiture.longueur) and (pla.hauteur >= voiture.hauteur)):
 				self.nbPlacesLibres -= 1
 				return pla
-		print("Votre voiture est trop grande.")
+		print("Votre voiture est trop grande pour les places disponible actuellement.")
 		return None
 		
 	def NbPlacesLibreAuNiveau(self, Niveau):

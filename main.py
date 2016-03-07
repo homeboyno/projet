@@ -1,12 +1,6 @@
 #!/usr/bin/python
 # -*-coding:UTF-8 -*-
 
-# Classe faites : Camera ; Panneau_affichage; Acces; Teleporteur; Place; 
-# Classe à completer : 
-# Classe à faire : 
-#
-#
-#
 from Client import Client
 from Parking import Parking
 from Camera import Camera
@@ -21,25 +15,17 @@ from Abonnement import Abonnement
 from random import randint
 import string
 import pickle 
-'''panneau_affi1 = Panneau_Affichage()
-tel_entree = Teleporteur(TelEntree)
-tel_sortie = Teleporteur(TelSortie)
-borne_ticket = Borne_Ticket()
-camera1 = Camera()
-acces1 = Acces(panneau_affi, tel_entree, tel_sortie, borne_ticket, camera1, parking)
-borne_ticket.add(acces1)
-camera1.add(acces1)'''
 
 def demandeEntree():
-	possede_card = input("Avez vous une carte ? 1:True 2:False ")
+	possede_card = raw_input("Avez vous une carte ? 1:True 2:False ")
 	possede_carte = stringToBool(possede_card)
 	if possede_carte:
 		print("Les cartes abonnement ne sont pas prisent en charge.")
 		return
 		#clt = input(BorneTicket.recupererInfosCarte(carte))
 	else:	
-		nom = input("Quel est votre nom ? ")
-		adresse = input("Quel est votre adresse ? ")
+		nom = raw_input("Quel est votre nom ? ")
+		adresse = raw_input("Quel est votre adresse ? ")
 		clt = Client(nom, adresse)
 	
 	if not(clt.estAbonne or clt.estSuperAbonne):
@@ -63,15 +49,15 @@ def aide():
 
 def stringToBool(n):
 	while True:
-		if n == 1:
+		if n == '1':
 			return True
-		elif n == 2:
+		elif n == '2':
 			return False
 		else:
-			n = input("1:True 2:False ")
+			n = raw_input("1:True 2:False ")
 	
 if __name__ == '__main__':
-	recuperation = input("Voulez vous recuperer les anciennes donnees ? 1:True 2:False ")
+	recuperation = raw_input("Voulez vous recuperer les anciennes donnees ? 1:True 2:False ")
 	recup = stringToBool(recuperation)
 	if recup:
 		fichier = open('parking.saved', 'r')
@@ -112,6 +98,8 @@ if __name__ == '__main__':
 		
 		print("Recuperation des donnees terminer")
 	else:
+		with open('TracePassage.txt', 'w') as fichier:
+			fichier.write("Création du parking\n\nListe des places :\n")
 		parking = Parking(10,5,4)
 		#Creation des places de parking
 		for etage in range (0,parking.nbNiveau): 
@@ -121,34 +109,35 @@ if __name__ == '__main__':
 				pla = Place(numero, etage_lettre, (randint(300,450)) ,True, (randint(150,250)))
 				parking.places.append(pla)
 				print("Place : " + str(pla.idPlace) + ". Longueur : " + str(pla.longueur) + ". Hauteur " + str(pla.hauteur))
-		
+				with open('TracePassage.txt', 'a') as fichier:
+					fichier.write("Place : " + str(pla.idPlace) + ". Longueur : " + str(pla.longueur) + ". Hauteur " + str(pla.hauteur) + "\n")
 		cam1 = Camera()
 		pano = Panneau_Affichage()
 		telEntre = Teleporteur("telEntre")
 		telSortie = Teleporteur("telSortie")
 		BorneTicket = Borne_Ticket()
 		acces1 = Acces(pano, telEntre, telSortie, BorneTicket, cam1, parking)
-
+		
 
 	continuer = True
 	while continuer:
-		select = input("Selectionner une option :\n\t1: Demande entree\n\t2: Demande sortie\n\t3: Aides\n")
-		if select == 1:
+		select = raw_input("Selectionner une option :\n\t1: Demande entree\n\t2: Demande sortie\n\t3: Aides\n")
+		if select == '1':
 			demandeEntree()
-		elif select == 2:
-			placeID = input("Quel place occupe votre vehicule ? ")
+		elif select == '2':
+			placeID = raw_input("Quel place occupe votre vehicule ? ")
 			demandeSortie(placeID, parking, telSortie)
-		elif select == 3:
+		elif select == '3':
 			aide()
 		else:
 			continue
 			
 		print(pano.afficherNbPlacesDisponible(parking))
-		continuee = input("Continuer le programme ? 1:True 2:False ")
+		continuee = raw_input("Continuer le programme ? 1:True 2:False ")
 		continuer = stringToBool(continuee)
 		
 		if continuer == False:
-			saves = input("Voulez vous sauvegarder les donnees ? 1:True 2:False ")
+			saves = raw_input("Voulez vous sauvegarder les donnees ? 1:True 2:False ")
 			save = stringToBool(saves)
 			if save:
 				output = open('parking.saved', 'w')
@@ -180,15 +169,3 @@ if __name__ == '__main__':
 				output.close()
 	print("Fin du programme")
 	
-
-'''
-Procedure pour initialiser le projet (no verif)
-	creer panneau affichage
-	creer les deux teleporteurs
-	creer camera
-	creer acces (avec tout les param precedent
-	creer borneTicket
-	x2
-	creer parking
-	creer un emseble de place
-'''

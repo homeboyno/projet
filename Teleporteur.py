@@ -1,5 +1,3 @@
-'''from Voiture import Voiture
-from Place import Place'''
 from Placement import Placement 
 from datetime import datetime
 
@@ -8,6 +6,10 @@ class Teleporteur:
 		self.tel = tel  #telEntree ou telSortie.
 		
 	def teleporterVoiture(self, voiture, place):
+		"""
+		Set the car in a placement
+		Save this information in TracePassage.txt
+		"""
 		placement = Placement(voiture, place) #Creer un nouveau placement entre la voiture et la place
 		voiture.addPlacementV(placement)
 		place.addPlacementP(placement)
@@ -24,6 +26,10 @@ class Teleporteur:
 			teleporterVoiture(voiture, Parking.recherchePlace(voiture))
 		
 	def retirerVoiture(self, placeID, parking):
+		"""
+		Free the car in the placement 
+		Save this information in TracePassage.txt
+		"""
 		for pla in parking.places:
 			if pla.idPlace == placeID and pla.estLibre == False:
 				pla.placement.partirPlace()
@@ -34,6 +40,3 @@ class Teleporteur:
 				return
 		print("La place demander est incorrect")
 		
-#place = Recuperer une place existante avec Parking.rechercherPlace.
-#placement = Placement(voiture, place)
-#voiture.addPlacementV(placement)
