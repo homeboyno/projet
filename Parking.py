@@ -13,6 +13,7 @@ class Parking:
 			if(pla.estLibre and (pla.longueur >= voiture.longueur) and (pla.hauteur >= voiture.hauteur)):
 				self.nbPlacesLibres -= 1
 				return pla
+		print("Votre voiture est trop grande.")
 		return None
 		
 	def NbPlacesLibreAuNiveau(self, Niveau):

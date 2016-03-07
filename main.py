@@ -43,10 +43,10 @@ def demandeEntree():
 		clt = Client(nom, adresse)
 	
 	if not(clt.estAbonne or clt.estSuperAbonne):
+		clt.entrerParking(acces1)
 		place = parking.recherchePlace(clt.voiture)
 		if place != None:
 			BorneTicket.proposerServices(clt, parking)
-			clt.entrerParking(acces1)
 			telEntre.teleporterVoiture(clt.voiture, place)
 		else:
 			print("Aucune place disponible pour votre véhicule.")
@@ -69,8 +69,6 @@ def stringToBool(n):
 			return False
 		else:
 			n = input("1:True 2:False ")
-
-
 	
 if __name__ == '__main__':
 	recuperation = input("Voulez vous recuperer les anciennes donnees ? 1:True 2:False ")
@@ -194,21 +192,3 @@ Procedure pour initialiser le projet (no verif)
 	creer parking
 	creer un emseble de place
 '''
-
-
-		
-'''	clt = Client("Robert", "rue de la foret")
-	
-	if not(clt.estAbonne or clt.estSuperAbonne):
-		place = parking.recherchePlace(clt.voiture)
-		if place != None:
-			BorneTicket.proposerServices(clt, parking)
-			clt.entrerParking(acces1)
-			telEntre.teleporterVoiture(clt.voiture, place)
-		else:
-			print("Aucune place disponible pour votre véhicule.")
-	else:
-		clt.entrerParking(acces1)
-		print(telEntre.teleporterVoitureSuperAbonne())
-'''
-	

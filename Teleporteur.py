@@ -32,7 +32,7 @@ class Teleporteur:
 				with open('TracePassage.txt', 'a') as fichier:
 					fichier.write(str(datetime.now()) + ": Sortie du vehicule : " + str(pla.placement.voiture.immatriculation) + ". Place occupe : " + str(pla.idPlace) +".\n")
 				return
-		print("La place demander est errone")
+		print("La place demander est incorrect")
 		
 #place = Recuperer une place existante avec Parking.rechercherPlace.
 #placement = Placement(voiture, place)
