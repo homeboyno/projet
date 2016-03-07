@@ -20,6 +20,7 @@ from Acces import Acces
 from Abonnement import Abonnement
 from random import randint
 import string
+import pickle 
 '''panneau_affi1 = Panneau_Affichage()
 tel_entree = Teleporteur(TelEntree)
 tel_sortie = Teleporteur(TelSortie)
@@ -30,9 +31,9 @@ borne_ticket.add(acces1)
 camera1.add(acces1)'''
 
 def demandeEntree():
-	possede_carte = input("Avez vous une carte ? True/False ")
-	possede_carte = bool(possede_carte)
-	if(possede_carte):
+	possede_card = input("Avez vous une carte ? 1:True 2:False ")
+	possede_carte = stringToBool(possede_card)
+	if possede_carte:
 		print("Les cartes abonnement ne sont pas prisent en charge.")
 		return
 		#clt = input(BorneTicket.recupererInfosCarte(carte))
@@ -60,46 +61,46 @@ def demandeSortie(placeID, parking, telSortie):
 def aide():
 	print(pano.afficherNbPlacesDisponible(parking))
 
-if __name__ == '__main__':
-#Parking, places, 
-	parking = Parking(10,5,4)
-	
-	#Creation des places de parking
-	for etage in range (0,parking.nbNiveau): 
-		string.letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-		etage_lettre = string.letters[etage]
-		for numero in range (1,parking.nbPlacesParNiveau +1):
-			pla = Place(numero, etage_lettre, (randint(300,450)) ,True, (randint(150,250)))
-			parking.places.append(pla)
-			print("Place : " + str(pla.idPlace) + ". Longueur : " + str(pla.longueur) + ". Hauteur " + str(pla.hauteur))
-	
-	
-	
-	cam1 = Camera()
-	pano = Panneau_Affichage()
-	telEntre = Teleporteur("telEntre")
-	telSortie = Teleporteur("telSortie")
-	BorneTicket = Borne_Ticket()
-	acces1 = Acces(pano, telEntre, telSortie, BorneTicket, cam1, parking)
-		
-	clt = Client("Robert", "rue de la foret")
-	
-	if not(clt.estAbonne or clt.estSuperAbonne):
-		place = parking.recherchePlace(clt.voiture)
-		if place != None:
-			BorneTicket.proposerServices(clt, parking)
-			clt.entrerParking(acces1)
-			telEntre.teleporterVoiture(clt.voiture, place)
+def stringToBool(n):
+	while True:
+		if n == 1:
+			return True
+		elif n == 2:
+			return False
 		else:
-			print("Aucune place disponible pour votre véhicule.")
+			n = input("1:True 2:False ")
+
+
+	
+if __name__ == '__main__':
+	recuperation = input("Voulez vous recuperer les anciennes donnees ? 1:True 2:False ")
+	recup = stringToBool(recuperation)
+	if recup:
+		print("recup" + recup)
+		input = open('parking.saved', 'r')
+		p = pickle.Unpickler(input)  
+		parking = p.load() 
+		input.close()
+		print("Recuperation des donnees terminer")
 	else:
-		clt.entrerParking(acces1)
-		print(telEntre.teleporterVoitureSuperAbonne())
+		parking = Parking(10,5,4)
+		#Creation des places de parking
+		for etage in range (0,parking.nbNiveau): 
+			string.letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+			etage_lettre = string.letters[etage]
+			for numero in range (1,parking.nbPlacesParNiveau +1):
+				pla = Place(numero, etage_lettre, (randint(300,450)) ,True, (randint(150,250)))
+				parking.places.append(pla)
+				print("Place : " + str(pla.idPlace) + ". Longueur : " + str(pla.longueur) + ". Hauteur " + str(pla.hauteur))
 		
-		
-	
-	
-	
+		cam1 = Camera()
+		pano = Panneau_Affichage()
+		telEntre = Teleporteur("telEntre")
+		telSortie = Teleporteur("telSortie")
+		BorneTicket = Borne_Ticket()
+		acces1 = Acces(pano, telEntre, telSortie, BorneTicket, cam1, parking)
+
+
 	continuer = True
 	while continuer:
 		select = input("Selectionner une option :\n\t1: Demande entree\n\t2: Demande sortie\n\t3: Aides\n")
@@ -114,9 +115,16 @@ if __name__ == '__main__':
 			continue
 			
 		print(pano.afficherNbPlacesDisponible(parking))
-		continuer = input("Continuer le programme ? True/False ")
-		bool(continuer)
+		continuee = input("Continuer le programme ? 1:True 2:False ")
+		continuer = stringToBool(continuee)
 		
+		if continuer == False:
+			saves = input("Voulez vous sauvegarder les donnees ? 1:True 2:False ")
+			save = stringToBool(saves)
+			if save:
+				output = open('parking.saved', 'w')
+				pickle.dump(parking, output)
+				output.close()
 	print("Fin du programme")
 	
 	
@@ -143,3 +151,21 @@ Procedure pour initialiser le projet (no verif)
 	creer parking
 	creer un emseble de place
 '''
+
+
+		
+'''	clt = Client("Robert", "rue de la foret")
+	
+	if not(clt.estAbonne or clt.estSuperAbonne):
+		place = parking.recherchePlace(clt.voiture)
+		if place != None:
+			BorneTicket.proposerServices(clt, parking)
+			clt.entrerParking(acces1)
+			telEntre.teleporterVoiture(clt.voiture, place)
+		else:
+			print("Aucune place disponible pour votre véhicule.")
+	else:
+		clt.entrerParking(acces1)
+		print(telEntre.teleporterVoitureSuperAbonne())
+'''
+	
