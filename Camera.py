@@ -9,11 +9,11 @@ class Camera:
 		
 	def capturerHauteur(self, Voiture):
 		#Voiture.hauteur = (random.randint(140,255))   #Voiture.hauteur
-		return random.randint(140,255)
+		return random.randint(175,225)
 				
 	def capturerLongueur(self, Voiture):
 		#Voiture.longueur = (random.randint(290,475))#Voiture.longueur
-		return random.randint(290,475)
+		return random.randint(275,425)
 		
 	def capturerImmatr(self, Voiture):
 		#string.letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
